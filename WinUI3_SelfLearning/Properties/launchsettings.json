@@ -1,0 +1,10 @@
+﻿{
+    "profiles": {
+      "WinUI3_SelfLearning (Package)": {
+        "commandName": "MsixPackage"
+      },
+      "WinUI3_SelfLearning (Unpackaged)": {
+        "commandName": "Project"
+      }
+    }
+}
