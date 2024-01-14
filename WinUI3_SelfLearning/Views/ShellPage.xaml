@@ -10,6 +10,7 @@
     Loaded="OnLoaded">
 
     <Grid>
+        <!--应用程序的最顶部，也就是包含最小化，最大化，关闭这些按钮的这一栏-->
         <Grid x:Name="AppTitleBar"
               Canvas.ZIndex="1"
               Height="{Binding ElementName=NavigationViewControl, Path=CompactPaneLength}"
@@ -25,6 +26,7 @@
                        Style="{StaticResource CaptionTextBlockStyle}"
                        Margin="28,0,0,0"/>
         </Grid>
+        <!--整个导航框架，包括左侧的汉堡导航栏和右侧的子页面显式部分-->
         <NavigationView
             x:Name="NavigationViewControl"
             Canvas.ZIndex="0"
@@ -32,9 +34,13 @@
             IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
             SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}"
             IsSettingsVisible="True"
-            ExpandedModeThresholdWidth="1280"
+            ExpandedModeThresholdWidth="1080"
             DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
             Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}">
+            <!--Header：这里的Header就是在右侧主体部分顶部显式的标题-->
+            <!--ExpandedModeThresholdWidth：当应用程序低于这个宽度，汉堡菜单会单独成为一层，浮动在主体部分的上层。当应用程序高于这个宽度，汉堡菜单展开时会挤压右侧主体部分。-->
+            
+            <!--左侧的导航菜单-->
             <NavigationView.MenuItems>
                 <!--
                 TODO: Update item titles by updating <x:Uid>.Content entries in Strings/en-us/Resources.resw.
@@ -43,6 +49,7 @@
                 TODO: Update item icons by updating FontIcon.Glyph properties.
                 https://docs.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#icon-list
                 -->
+                <!--每个导航栏的标题都和进入页面后的标题是一个文本，在/Strings/en-us/Resources.resw文件中更改-->
                 <NavigationViewItem x:Uid="Shell_Main" helpers:NavigationHelper.NavigateTo="WinUI3_SelfLearning.ViewModels.MainViewModel">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe7c3;"/>
@@ -77,18 +84,20 @@
                 <behaviors:NavigationViewHeaderBehavior
                     DefaultHeader="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}">
                     <behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
+                        <!--该模板负责配置右侧主体部分顶部的标题-->
                         <DataTemplate>
-                            <Grid>
+                            <Grid Background="Aquamarine">
                                 <TextBlock
                                     Text="{Binding}"
-                                    Style="{ThemeResource TitleTextBlockStyle}" />
+                                    Style="{ThemeResource TitleTextBlockStyle}" Foreground="Red" Margin="0"/>
                             </Grid>
                         </DataTemplate>
                     </behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
                 </behaviors:NavigationViewHeaderBehavior>
             </i:Interaction.Behaviors>
-            <Grid Margin="{StaticResource NavigationViewPageContentMargin}">
-                <Frame x:Name="NavigationFrame" />
+            <!--右侧真正填充子页面的部分，其边距在/Styles/Thickness.xaml中配置-->
+            <Grid Margin="{StaticResource NavigationViewPageContentMargin}" Background="Gainsboro" >
+                <Frame x:Name="NavigationFrame"/>
             </Grid>
         </NavigationView>
     </Grid>
