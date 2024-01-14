@@ -89,7 +89,7 @@
                             <Grid Background="Aquamarine">
                                 <TextBlock
                                     Text="{Binding}"
-                                    Style="{ThemeResource TitleTextBlockStyle}" Foreground="Red" Margin="0"/>
+                                    Style="{ThemeResource TitleTextBlockStyle}" Foreground="Red" Margin="0" Padding="0"/>
                             </Grid>
                         </DataTemplate>
                     </behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>

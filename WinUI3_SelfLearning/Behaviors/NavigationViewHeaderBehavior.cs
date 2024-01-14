@@ -7,6 +7,11 @@ using WinUI3_SelfLearning.Contracts.Services;
 
 namespace WinUI3_SelfLearning.Behaviors;
 
+/// <summary>
+/// 该类用于执行在任意子页面顶部显式该页面的标题。
+/// 该类主要是在ShellPage.xaml中被使用，在模板中配置一次，则所有子页面都会默认生效。除非在子页面顶部的Page中手动设置显式模式为Never。
+/// behaviors:NavigationViewHeaderBehavior.HeaderMode="Never"，参考ListDetailsPage.xaml文件。
+/// </summary>
 public class NavigationViewHeaderBehavior : Behavior<NavigationView>
 {
     private static NavigationViewHeaderBehavior? _current;
