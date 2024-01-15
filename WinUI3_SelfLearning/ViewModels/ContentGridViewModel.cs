@@ -24,6 +24,10 @@ public partial class ContentGridViewModel : ObservableRecipient, INavigationAwar
         _sampleDataService = sampleDataService;
     }
 
+    /// <summary>
+    /// 导航进入此页面
+    /// </summary>
+    /// <param name="parameter"></param>
     public async void OnNavigatedTo(object parameter)
     {
         Source.Clear();
@@ -36,10 +40,15 @@ public partial class ContentGridViewModel : ObservableRecipient, INavigationAwar
         }
     }
 
+    /// <summary>
+    /// 导航离开此页面
+    /// </summary>
     public void OnNavigatedFrom()
     {
     }
 
+    //通过使用该Attribute，会自动根据方法的名称，生成对应的Command。
+    //比如当前方法，会自动生成一个名为ItemClickCommand的 ICommand对象。
     [RelayCommand]
     private void OnItemClick(SampleOrder? clickedItem)
     {

@@ -83,14 +83,24 @@ public class NavigationService : INavigationService
         return false;
     }
 
+    /// <summary>
+    /// 导航到指定的页面
+    /// </summary>
+    /// <param name="pageKey">页面所对应ViewModel的完成路径，比如：WinUI3_SelfLearning.ViewModels.ContentGridDetailViewModel</param>
+    /// <param name="parameter">导航时传递的参数</param>
+    /// <param name="clearNavigation"></param>
+    /// <returns></returns>
     public bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false)
     {
         var pageType = _pageService.GetPageType(pageKey);
 
+        //如果当前页面不是目的地页面，或者当前页面就是目的地页面但所传的参数不一样。
         if (_frame != null && (_frame.Content?.GetType() != pageType || (parameter != null && !parameter.Equals(_lastParameterUsed))))
         {
+            //Tag中可以为frame携带object类型的自定义信息，方便之后使用。
             _frame.Tag = clearNavigation;
             var vmBeforeNavigation = _frame.GetPageViewModel();
+            //该方法才是真正实现页面导航的方法
             var navigated = _frame.Navigate(pageType, parameter);
             if (navigated)
             {
@@ -111,6 +121,7 @@ public class NavigationService : INavigationService
     {
         if (sender is Frame frame)
         {
+            //如果一个页面携带的clearNavigation值为true，则导航至该页面后，无法回退。导航栈中的信息被清空。
             var clearNavigation = (bool)frame.Tag;
             if (clearNavigation)
             {
