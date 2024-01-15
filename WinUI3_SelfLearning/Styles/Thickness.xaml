@@ -23,14 +23,29 @@
     <Thickness x:Key="XXSmallTopMargin">0,4,0,0</Thickness>
     <Thickness x:Key="XXSmallLeftTopRightBottomMargin">4,4,4,4</Thickness>
 
+    <!--这里面设置的Style有一些是重写了WindowsAppSDK中的预设值，这些预设值储存在generic.xaml文件中。-->
+    <!--generic.xaml文件的储存位置在 C:\Users\jinge\.nuget\packages\microsoft.windowsappsdk\1.4.231008000\lib\net6.0-windows10.0.18362.0\Microsoft.WinUI\Themes-->
+    <!--访问generic.xaml文件的时候，注意在路径中，务必选择当前使用的WindowsAppSDK版本，另外还有当前系统的版本。-->
+    
+    <!--整个右侧面板的边框-->
     <Thickness x:Key="NavigationViewContentGridBorderThickness">1,1,0,0</Thickness>
     <CornerRadius x:Key="NavigationViewContentGridCornerRadius">8,0,0,0</CornerRadius>
+    <!--整个右侧面板的外边距-->
     <Thickness x:Key="NavigationViewContentMargin">0,48,0,0</Thickness>
-    <Thickness x:Key="NavigationViewHeaderMargin">56,34,0,0</Thickness>
-    <Thickness x:Key="NavigationViewPageContentMargin">56,24,56,0</Thickness>
+    <!--右侧页面顶部的标题边距，单独修改它并不会立即生效，只有重启后才会生效。如果想要立即生效，需要从generic.xaml文件中引入下方的NavigationViewTitleHeaderContentControlTextStyle-->
+    <Thickness x:Key="NavigationViewHeaderMargin">12,12,12,0</Thickness>
+    <!--导航页面主体部分的边距-->
+    <Thickness x:Key="NavigationViewPageContentMargin">12,12,12,0</Thickness>
 
     <Thickness x:Key="MenuBarContentMargin">36,24,36,0</Thickness>
 
     <Thickness x:Key="SettingsPageHyperlinkButtonMargin">-12,4,0,0</Thickness>
-    
+
+    <!--<Style x:Key="NavigationViewTitleHeaderContentControlTextStyle" TargetType="ContentControl">
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="FontSize" Value="28" />
+        <Setter Property="FontFamily" Value="XamlAutoFontFamily" />
+        <Setter Property="Margin" Value="{ThemeResource NavigationViewHeaderMargin}" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+    </Style>-->
 </ResourceDictionary>

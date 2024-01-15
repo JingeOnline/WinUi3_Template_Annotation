@@ -36,9 +36,10 @@
             IsSettingsVisible="True"
             ExpandedModeThresholdWidth="1080"
             DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
-            Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}">
+            Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}" OpenPaneLength="200">
             <!--Header：这里的Header就是在右侧主体部分顶部显式的标题-->
             <!--ExpandedModeThresholdWidth：当应用程序低于这个宽度，汉堡菜单会单独成为一层，浮动在主体部分的上层。当应用程序高于这个宽度，汉堡菜单展开时会挤压右侧主体部分。-->
+            <!--OpenPaneLength 控制左侧汉堡菜单的宽度-->
             
             <!--左侧的导航菜单-->
             <NavigationView.MenuItems>
@@ -86,10 +87,12 @@
                     <behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
                         <!--该模板负责配置右侧主体部分顶部的标题-->
                         <DataTemplate>
-                            <Grid Background="Aquamarine">
+                            <Grid Background="Aquamarine" Margin="0" Padding="0">
                                 <TextBlock
                                     Text="{Binding}"
-                                    Style="{ThemeResource TitleTextBlockStyle}" Foreground="Red" Margin="0" Padding="0"/>
+                                    Style="{ThemeResource TitleTextBlockStyle}" Foreground="Red" Margin="0" Padding="0"
+                                    FontSize="32"/>
+                                <!--这里的TitileTextBlockStyle也是generic.xaml中预设的style-->
                             </Grid>
                         </DataTemplate>
                     </behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
