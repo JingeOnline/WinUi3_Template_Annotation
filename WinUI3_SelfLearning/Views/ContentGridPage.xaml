@@ -20,6 +20,7 @@
             ItemsSource="{x:Bind ViewModel.Source,Mode=OneWay}"
             SelectionMode="None"
             StretchContentForSingleRow="False">
+            <!--animations配置的是导航动画，具体使用方法，参考WinUI3 Gallery中的Connected Animation-->
             <controls:AdaptiveGridView.ItemTemplate>
                 <DataTemplate x:DataType="models:SampleOrder">
                     <Grid

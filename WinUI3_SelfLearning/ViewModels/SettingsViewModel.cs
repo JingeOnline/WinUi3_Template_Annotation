@@ -23,6 +23,9 @@ public partial class SettingsViewModel : ObservableRecipient
     [ObservableProperty]
     private string _versionDescription;
 
+    /// <summary>
+    /// 绑定到每个RadioButton
+    /// </summary>
     public ICommand SwitchThemeCommand
     {
         get;
@@ -34,6 +37,7 @@ public partial class SettingsViewModel : ObservableRecipient
         _elementTheme = _themeSelectorService.Theme;
         _versionDescription = GetVersionDescription();
 
+        //该Command有一个ElementTheme类型的参数，ElementTheme本身就是一个枚举类型，包含Light，Dark，Default三个值
         SwitchThemeCommand = new RelayCommand<ElementTheme>(
             async (param) =>
             {
@@ -45,6 +49,10 @@ public partial class SettingsViewModel : ObservableRecipient
             });
     }
 
+    /// <summary>
+    /// 获取应用程序版本信息
+    /// </summary>
+    /// <returns></returns>
     private static string GetVersionDescription()
     {
         Version version;

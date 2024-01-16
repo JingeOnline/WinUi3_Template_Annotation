@@ -41,6 +41,8 @@ internal class TitleBarHelper
                 theme = Application.Current.RequestedTheme == ApplicationTheme.Light ? ElementTheme.Light : ElementTheme.Dark;
             }
 
+            //这是switch语法的一种写法，当theme值与switch中的某个值匹配，则返回对应的值。
+            //这里设置的各种颜色，好像针对的就是标题栏中最右侧的“最小化”，“最大化”，“关闭”按钮。
             App.MainWindow.AppWindow.TitleBar.ButtonForegroundColor = theme switch
             {
                 ElementTheme.Dark => Colors.White,

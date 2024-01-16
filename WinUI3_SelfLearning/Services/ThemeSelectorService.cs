@@ -29,6 +29,11 @@ public class ThemeSelectorService : IThemeSelectorService
         await Task.CompletedTask;
     }
 
+    /// <summary>
+    /// 设置/变更主题
+    /// </summary>
+    /// <param name="theme"></param>
+    /// <returns></returns>
     public async Task SetThemeAsync(ElementTheme theme)
     {
         Theme = theme;

@@ -24,6 +24,7 @@ public sealed partial class ContentGridDetailPage : Page
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
         base.OnNavigatedTo(e);
+        //这里负责导航页面的动画效果，"animationKeyContentGrid"在ContentGridPage.xaml中被使用。
         this.RegisterElementForConnectedAnimation("animationKeyContentGrid", itemHero);
     }
 

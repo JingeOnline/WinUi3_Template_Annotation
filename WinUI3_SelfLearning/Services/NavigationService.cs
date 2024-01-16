@@ -71,6 +71,7 @@ public class NavigationService : INavigationService
         if (CanGoBack)
         {
             var vmBeforeNavigation = _frame.GetPageViewModel();
+            //页面回退
             _frame.GoBack();
             if (vmBeforeNavigation is INavigationAware navigationAware)
             {
